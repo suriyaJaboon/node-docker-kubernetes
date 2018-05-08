@@ -1,0 +1,18 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: task-storage
+  labels:
+    type: local
+spec:
+  reclaimPolicy:
+    - Recycle
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/dist/data"
+
+
+    

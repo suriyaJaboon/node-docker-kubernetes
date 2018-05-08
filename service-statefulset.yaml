@@ -35,3 +35,18 @@ spec:
         image: hello-node:v1
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: task-pv-storage
+          mountPath: /usr/app
+      # volumes:
+      #   - name: task-pv-storage
+      #     hostPath:
+      #       path: /var/dist/
+
+      #   volumeMounts:
+      #       - name: task-pv-storage
+      #         mountPath: /usr/app
+      volumes:
+        - name: task-pv-storage
+          persistentVolumeClaim:
+            claimName: task-pv-claim

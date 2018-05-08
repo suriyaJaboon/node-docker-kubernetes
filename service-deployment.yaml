@@ -30,7 +30,14 @@ spec:
         app: hello-node
     spec:
       containers:
-      - name: hello-node
-        image: hello-node:v1
-        ports:
-        - containerPort: 8080
+        - name: hello-node
+          image: hello-node:v1
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: task-pv-storage
+              mountPath: /usr/app
+      volumes:
+        - name: task-pv-storage
+          persistentVolumeClaim:
+            claimName: task-pv-claim
